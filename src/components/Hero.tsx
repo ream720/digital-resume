@@ -1,23 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { resumeData } from '../data/resume';
-import { MapPin, Mail, Phone, Linkedin, Github, Download, ExternalLink } from 'lucide-react';
-import ContactModal from './ContactModal';
+import { MapPin, Mail, Phone, Linkedin, Github } from 'lucide-react';
 
 export default function Hero() {
   const { personal } = resumeData;
-  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const copyToClipboard = async (value: string, label: string) => {
+    try {
+      if (!navigator.clipboard) {
+        throw new Error('Clipboard API unavailable');
+      }
+
+      await navigator.clipboard.writeText(value);
+      setToastMessage(`${label} copied to clipboard`);
+    } catch {
+      setToastMessage(`Could not copy ${label.toLowerCase()}`);
+    }
+  };
+
+  useEffect(() => {
+    if (!toastMessage) {
+      return;
+    }
+
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+
+    toastTimeoutRef.current = setTimeout(() => {
+      setToastMessage(null);
+    }, 2200);
+
+    return () => {
+      if (toastTimeoutRef.current) {
+        clearTimeout(toastTimeoutRef.current);
+      }
+    };
+  }, [toastMessage]);
 
   return (
     <section className="relative pt-20 pb-32 overflow-hidden">
-      <ContactModal 
-        isOpen={isContactOpen} 
-        onClose={() => setIsContactOpen(false)} 
-        recipientEmail={personal.contact.email}
-      />
-      
       <div className="max-w-5xl mx-auto px-6 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -30,28 +57,21 @@ export default function Hero() {
             </span>
             Open to Opportunities
           </div>
-          
+
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
             {personal.name}
           </h1>
-          
+
           <h2 className="text-2xl md:text-3xl font-medium text-slate-400">
             {personal.title}
           </h2>
-          
+
           <p className="max-w-2xl text-lg text-slate-400 leading-relaxed">
             {personal.summary}
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <button 
-              onClick={() => setIsContactOpen(true)}
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-500 hover:shadow-indigo-500/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-lg shadow-indigo-500/20"
-            >
-              <Mail className="w-4 h-4 mr-2" />
-              Contact Me
-            </button>
-            <a 
+            <a
               href={personal.contact.github}
               target="_blank"
               rel="noopener noreferrer"
@@ -60,7 +80,7 @@ export default function Hero() {
               <Github className="w-4 h-4 mr-2" />
               GitHub
             </a>
-            <a 
+            <a
               href={personal.contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
@@ -71,26 +91,44 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="flex flex-wrap gap-6 pt-8 text-sm text-slate-500 font-mono">
-            <div className="flex items-center">
+          <div className="flex flex-col items-start gap-3 pt-8 text-sm text-slate-500 font-mono">
+            <button
+              type="button"
+              onClick={() => copyToClipboard(personal.location, 'Address')}
+              className="flex items-center hover:text-indigo-400 transition-colors text-left"
+              aria-label="Copy address"
+            >
               <MapPin className="w-4 h-4 mr-2 text-slate-600" />
               {personal.location}
-            </div>
-            <div className="flex items-center">
+            </button>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(personal.contact.phone, 'Phone number')}
+              className="flex items-center hover:text-indigo-400 transition-colors text-left"
+              aria-label="Copy phone number"
+            >
               <Phone className="w-4 h-4 mr-2 text-slate-600" />
               {personal.contact.phone}
-            </div>
-            <a 
-              href={`mailto:${personal.contact.email}`} 
-              className="flex items-center hover:text-indigo-400 transition-colors"
+            </button>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(personal.contact.email, 'Email')}
+              className="flex items-center hover:text-indigo-400 transition-colors text-left"
+              aria-label="Copy email"
             >
               <Mail className="w-4 h-4 mr-2 text-slate-600" />
               {personal.contact.email}
-            </a>
+            </button>
           </div>
         </motion.div>
       </div>
-      
+
+      {toastMessage ? (
+        <div className="fixed bottom-6 right-6 z-50 rounded-lg border border-indigo-400/30 bg-slate-900/95 px-4 py-2 text-sm text-slate-100 shadow-lg backdrop-blur-sm">
+          {toastMessage}
+        </div>
+      ) : null}
+
       {/* Abstract Background Decoration */}
       <div className="absolute top-0 right-0 -z-10 opacity-10 transform translate-x-1/3 -translate-y-1/4">
         <svg width="800" height="800" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
