@@ -1,21 +1,21 @@
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Linkedin, 
-  Github, 
-  Code2, 
-  Layout, 
-  Database, 
-  Server, 
-  Terminal, 
-  Cpu 
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Linkedin,
+  Github,
+  Code2,
+  Layout,
+  Database,
+  Server,
+  Terminal,
+  Cpu
 } from 'lucide-react';
 
 export const resumeData = {
   personal: {
     name: "Zak Ream",
-    title: "Senior Frontend Engineer",
+    title: "Senior Software Engineer — React & Full-Stack Systems",
     location: "Wilmington, DE (Greater Philadelphia Area)",
     contact: {
       phone: "724 549 9905",
@@ -66,6 +66,7 @@ export const resumeData = {
       description: "Core frontend contributor on a 3-person UI team building NextGen scientific SaaS platform using React and TypeScript within an Nx monorepo architecture.",
       achievements: [
         "Design and maintain scalable UI systems and shared component libraries consumed across multiple applications",
+        "Partnered with backend engineers to refine API contracts and optimize data flows supporting complex scientific workflows",
         "Develop high-performance real-time data visualizations using D3 and WebGL (Pixi.js)",
         "Build and evolve server-state (TanStack Query) and client state (Zustand) solutions to support complex domain workflows",
         "Contribute to architectural discussions and frontend best practices across the team",
@@ -94,7 +95,7 @@ export const resumeData = {
       period: "2019 – 2022",
       description: "Developed full-stack banking micro-application for high-net-worth customers.",
       achievements: [
-        "Built Angular frontends integrated with Spring Boot microservices",
+        "Delivered full-stack features across Angular frontends and Spring Boot microservices within a microservices architecture",
         "Maintained 85% unit test coverage under strict quality gates",
         "Contributed to MongoDB schema design and production release coordination"
       ]
