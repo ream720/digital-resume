@@ -23,7 +23,7 @@ export const resumeData = {
       linkedin: "https://linkedin.com/in/ream720/",
       github: "https://github.com/ream720"
     },
-    summary: "Senior Frontend Engineer with 7 years of experience building production React and TypeScript applications across fintech and SaaS platforms. Experienced designing scalable frontend architectures, reusable component systems, and performant data-driven interfaces. Comfortable operating in both structured enterprise environments and fast-moving product teams, with strong ownership of feature delivery, code quality, and engineering standards."
+    summary: "Senior Software Engineer with 7 years of experience building production React and TypeScript applications across fintech and SaaS platforms. Experienced designing scalable frontend architectures, reusable component systems, and performant data-driven interfaces. Comfortable operating in both structured enterprise environments and fast-moving product teams, with strong ownership of feature delivery, code quality, and engineering standards."
   },
   skills: [
     {
