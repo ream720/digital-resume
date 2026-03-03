@@ -42,99 +42,132 @@ export default function Hero() {
   }, [toastMessage]);
 
   return (
-    <section className="relative pt-20 pb-32 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-zinc-950">
+      {/* Background Image Setup */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/30 z-10" />
+        <img
+          src="/images/s4.jpg"
+          alt="Automotive background"
+          className="absolute right-0 top-0 w-full md:w-[70%] h-full object-cover object-center opacity-60 md:opacity-80 mix-blend-luminosity"
+        />
+        <div className="absolute inset-0 mix-blend-overlay bg-cyan-900/20 z-10" />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6 w-full relative z-20 pt-20 pb-20">
+        <div className="max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="space-y-8"
+          >
+            {/* Status Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center px-3 py-1.5 rounded-sm bg-zinc-900/80 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+            >
+              <span className="relative flex h-2 w-2 mr-3">
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              Open to Opportunities
+            </motion.div>
+
+            {/* Main Typograpy */}
+            <div className="space-y-2">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase drop-shadow-2xl">
+                {personal.name}
+              </h1>
+              <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 uppercase">
+                {personal.title}
+              </h2>
+            </div>
+
+            {/* Summary */}
+            <p className="max-w-xl text-lg text-zinc-400 leading-relaxed font-light border-l-2 border-cyan-500/50 pl-6 backdrop-blur-sm bg-zinc-950/30 py-2">
+              {personal.summary}
+            </p>
+
+            {/* Actions */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <motion.a
+                whileHover={{ scale: 1.05, backgroundColor: 'rgba(39, 39, 42, 0.9)' }}
+                whileTap={{ scale: 0.95 }}
+                href={personal.contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 rounded-none bg-zinc-900 border border-zinc-700 text-zinc-200 font-medium uppercase tracking-wider text-sm transition-colors shadow-lg shadow-black/50"
+              >
+                <Github className="w-4 h-4 mr-3 text-cyan-500" />
+                GitHub
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.05, backgroundColor: 'rgba(39, 39, 42, 0.9)' }}
+                whileTap={{ scale: 0.95 }}
+                href={personal.contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 rounded-none bg-zinc-900 border border-zinc-700 text-zinc-200 font-medium uppercase tracking-wider text-sm transition-colors shadow-lg shadow-black/50"
+              >
+                <Linkedin className="w-4 h-4 mr-3 text-cyan-500" />
+                LinkedIn
+              </motion.a>
+            </div>
+
+            {/* Contact Pills */}
+            <div className="flex flex-wrap items-center gap-3 pt-8 text-xs text-zinc-500 font-mono tracking-wide">
+              <button
+                type="button"
+                onClick={() => copyToClipboard(personal.location, 'Address')}
+                className="flex items-center px-3 py-2 bg-zinc-900/50 border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors backdrop-blur-sm group"
+                aria-label="Copy address"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-2 text-zinc-600 group-hover:text-cyan-500 transition-colors" />
+                {personal.location}
+              </button>
+              <button
+                type="button"
+                onClick={() => copyToClipboard(personal.contact.phone, 'Phone number')}
+                className="flex items-center px-3 py-2 bg-zinc-900/50 border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors backdrop-blur-sm group"
+                aria-label="Copy phone number"
+              >
+                <Phone className="w-3.5 h-3.5 mr-2 text-zinc-600 group-hover:text-cyan-500 transition-colors" />
+                {personal.contact.phone}
+              </button>
+              <button
+                type="button"
+                onClick={() => copyToClipboard(personal.contact.email, 'Email')}
+                className="flex items-center px-3 py-2 bg-zinc-900/50 border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors backdrop-blur-sm group"
+                aria-label="Copy email"
+              >
+                <Mail className="w-3.5 h-3.5 mr-2 text-zinc-600 group-hover:text-cyan-500 transition-colors" />
+                {personal.contact.email}
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Decorative Automotive Elements */}
+      <div className="absolute bottom-0 right-0 w-1/2 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-blue-600 opacity-50 z-20"></div>
+      <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 z-20 hidden lg:block"></div>
+
+      {/* Toast */}
+      {toastMessage ? (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-6"
+          initial={{ opacity: 0, y: 50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          className="fixed bottom-6 right-6 z-50 px-4 py-3 bg-zinc-900 border border-cyan-500/40 text-sm text-cyan-100 shadow-[0_0_20px_rgba(6,182,212,0.2)] font-mono tracking-wide"
         >
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium">
-            <span className="relative flex h-2 w-2 mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-            </span>
-            Open to Opportunities
-          </div>
-
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white">
-            {personal.name}
-          </h1>
-
-          <h2 className="text-2xl md:text-3xl font-medium text-slate-400">
-            {personal.title}
-          </h2>
-
-          <p className="max-w-2xl text-lg text-slate-400 leading-relaxed">
-            {personal.summary}
-          </p>
-
-          <div className="flex flex-wrap gap-4 pt-4">
-            <a
-              href={personal.contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 font-medium hover:bg-slate-700 hover:border-slate-600 hover:text-white hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-sm hover:shadow-md"
-            >
-              <Github className="w-4 h-4 mr-2" />
-              GitHub
-            </a>
-            <a
-              href={personal.contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 font-medium hover:bg-slate-700 hover:border-slate-600 hover:text-white hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 shadow-sm hover:shadow-md"
-            >
-              <Linkedin className="w-4 h-4 mr-2" />
-              LinkedIn
-            </a>
-          </div>
-
-          <div className="flex flex-col items-start gap-3 pt-8 text-sm text-slate-500 font-mono">
-            <button
-              type="button"
-              onClick={() => copyToClipboard(personal.location, 'Address')}
-              className="flex items-center hover:text-indigo-400 transition-colors text-left"
-              aria-label="Copy address"
-            >
-              <MapPin className="w-4 h-4 mr-2 text-slate-600" />
-              {personal.location}
-            </button>
-            <button
-              type="button"
-              onClick={() => copyToClipboard(personal.contact.phone, 'Phone number')}
-              className="flex items-center hover:text-indigo-400 transition-colors text-left"
-              aria-label="Copy phone number"
-            >
-              <Phone className="w-4 h-4 mr-2 text-slate-600" />
-              {personal.contact.phone}
-            </button>
-            <button
-              type="button"
-              onClick={() => copyToClipboard(personal.contact.email, 'Email')}
-              className="flex items-center hover:text-indigo-400 transition-colors text-left"
-              aria-label="Copy email"
-            >
-              <Mail className="w-4 h-4 mr-2 text-slate-600" />
-              {personal.contact.email}
-            </button>
+          <div className="flex items-center">
+            <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse mr-2"></div>
+            {toastMessage}
           </div>
         </motion.div>
-      </div>
-
-      {toastMessage ? (
-        <div className="fixed bottom-6 right-6 z-50 rounded-lg border border-indigo-400/30 bg-slate-900/95 px-4 py-2 text-sm text-slate-100 shadow-lg backdrop-blur-sm">
-          {toastMessage}
-        </div>
       ) : null}
-
-      {/* Abstract Background Decoration */}
-      <div className="absolute top-0 right-0 -z-10 opacity-10 transform translate-x-1/3 -translate-y-1/4">
-        <svg width="800" height="800" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#6366f1" d="M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,71.4,32.7C60.6,43.9,50.3,53.4,39.1,61.6C27.9,69.8,15.8,76.7,2.2,72.9C-11.4,69.1,-26.5,54.6,-39.9,42.1C-53.3,29.6,-65,19.1,-70.6,5.6C-76.2,-7.9,-75.7,-24.4,-67.7,-38.6C-59.7,-52.8,-44.2,-64.7,-29.3,-71.4C-14.4,-78.1,0,-79.6,14.7,-78.5C29.4,-77.4,58.8,-73.7,44.7,-76.4Z" transform="translate(100 100)" />
-        </svg>
-      </div>
     </section>
   );
 }
