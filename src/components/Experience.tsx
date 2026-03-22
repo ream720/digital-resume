@@ -7,7 +7,7 @@ export default function Experience() {
   const { experience } = resumeData;
 
   return (
-    <section className="py-24 bg-zinc-950 relative overflow-hidden">
+    <section className="pb-24 bg-zinc-950 relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         <div className="mb-16 flex items-center">
           <h2 className="text-3xl font-black text-white uppercase tracking-tight">Track Record</h2>

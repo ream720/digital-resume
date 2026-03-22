@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { resumeData } from '../data/resume';
 import { MapPin, Mail, Phone, Linkedin, Github } from 'lucide-react';
+import { ScrambleText } from './ui/ScrambleText';
+import { Particles } from './ui/Particles';
 
 export default function Hero() {
   const { personal } = resumeData;
@@ -43,6 +45,10 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-zinc-950">
+      
+      {/* Subtle Canvas Particle Overlay */}
+      <Particles className="opacity-60" />
+
       {/* Abstract System Background */}
       <div className="absolute inset-0 z-0">
         {/* Deep navy radial base */}
@@ -95,10 +101,10 @@ export default function Hero() {
             {/* Main Typograpy */}
             <div className="space-y-2">
               <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white uppercase drop-shadow-2xl">
-                {personal.name}
+                <ScrambleText text={personal.name} delay={400} />
               </h1>
               <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 uppercase">
-                {personal.title}
+                <ScrambleText text={personal.title} delay={900} duration={1500} />
               </h2>
             </div>
 
