@@ -5,6 +5,7 @@
 
 import React from 'react';
 import Hero from './components/Hero';
+import HowIWork from './components/HowIWork';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Education from './components/Education';
@@ -15,6 +16,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 selection:bg-indigo-500/30 selection:text-indigo-200">
       <main>
         <Hero />
+        <HowIWork />
         <Skills />
         <Experience />
         <Education />

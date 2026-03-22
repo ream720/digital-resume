@@ -43,16 +43,32 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-zinc-950">
-      {/* Background Image Setup */}
+      {/* Abstract System Background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/90 to-transparent z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/30 z-10" />
-        <img
-          src="/images/s4.jpg"
-          alt="Automotive background"
-          className="absolute right-0 top-0 w-full md:w-[70%] h-full object-cover object-center opacity-60 md:opacity-80 mix-blend-luminosity"
-        />
-        <div className="absolute inset-0 mix-blend-overlay bg-cyan-900/20 z-10" />
+        {/* Deep navy radial base */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#0f172a_0%,_#050a0f_60%,_#000000_100%)]" />
+        {/* Subtle cyan glow on right */}
+        <div className="absolute top-0 right-0 w-3/4 h-full bg-[radial-gradient(ellipse_at_60%_30%,_rgba(6,182,212,0.07)_0%,_transparent_65%)]" />
+        {/* Network / dot-grid SVG overlay */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-[0.06]"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <defs>
+            <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="1" fill="#22d3ee" />
+            </pattern>
+            <pattern id="grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+              <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#22d3ee" strokeWidth="0.4" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+          <rect width="100%" height="100%" fill="url(#dots)" />
+        </svg>
+        {/* Left-side fade keeps text area clean */}
+        <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/20 z-10" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 w-full relative z-20 pt-20 pb-20">
@@ -122,11 +138,11 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => copyToClipboard(personal.location, 'Address')}
-                className="flex items-center px-3 py-2 bg-zinc-900/50 border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors backdrop-blur-sm group"
+                className="flex items-center text-left px-3 py-2 bg-zinc-900/50 border border-zinc-800 hover:border-cyan-500/50 hover:text-cyan-400 transition-colors backdrop-blur-sm group"
                 aria-label="Copy address"
               >
-                <MapPin className="w-3.5 h-3.5 mr-2 text-zinc-600 group-hover:text-cyan-500 transition-colors" />
-                {personal.location}
+                <MapPin className="w-3.5 h-3.5 mr-2 text-zinc-600 group-hover:text-cyan-500 transition-colors flex-shrink-0" />
+                <span>Wilmington, DE{' '}<span className="whitespace-nowrap">(Greater Philadelphia Area)</span></span>
               </button>
               <button
                 type="button"
@@ -151,8 +167,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative Automotive Elements */}
-      <div className="absolute bottom-0 right-0 w-1/2 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-blue-600 opacity-50 z-20"></div>
+      {/* Decorative Edge Lines */}
+      <div className="absolute bottom-0 right-0 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-500 to-blue-600 opacity-50 z-20"></div>
       <div className="absolute top-1/4 right-8 w-px h-32 bg-gradient-to-b from-cyan-500/0 via-cyan-500/50 to-cyan-500/0 z-20 hidden lg:block"></div>
 
       {/* Toast */}

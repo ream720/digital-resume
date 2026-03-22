@@ -9,7 +9,9 @@ import {
   Database,
   Server,
   Terminal,
-  Cpu
+  Cpu,
+  GitMerge,
+  Users,
 } from 'lucide-react';
 
 export const resumeData = {
@@ -23,13 +25,13 @@ export const resumeData = {
       linkedin: "https://linkedin.com/in/ream720/",
       github: "https://github.com/ream720"
     },
-    summary: "Senior Software Engineer with 7 years of experience building production React and TypeScript applications across fintech and SaaS platforms. Experienced designing scalable frontend architectures, reusable component systems, and performant data-driven interfaces. Comfortable operating in both structured enterprise environments and fast-moving product teams, with strong ownership of feature delivery, code quality, and engineering standards."
+    summary: "I build across systems — connecting UI, APIs, and real-world problems into working software. From frontend architecture to AI-assisted workflows, I focus on shipping complete, scalable solutions."
   },
   skills: [
     {
       category: "Frontend",
       icon: Layout,
-      items: ["React", "TypeScript", "JavaScript ES6", "React Router"]
+      items: ["React", "TypeScript", "JavaScript (ES6+)", "React Router"]
     },
     {
       category: "State Management",
@@ -37,42 +39,57 @@ export const resumeData = {
       items: ["Zustand", "TanStack Query", "Redux patterns"]
     },
     {
+      category: "Backend",
+      icon: Server,
+      items: ["Java (Spring Boot)", "REST APIs", "Node.js", "ASP.NET / MVC exposure"]
+    },
+    {
+      category: "Data",
+      icon: GitMerge,
+      items: ["Oracle SQL", "MongoDB", "Relational schema design", "Data querying"]
+    },
+    {
+      category: "Architecture",
+      icon: Cpu,
+      items: ["Nx monorepos", "Modular frontend design", "Shared packages", "MFE architecture", "API contract design"]
+    },
+    {
       category: "UI & Styling",
       icon: Code2,
       items: ["Tailwind CSS", "Theming systems", "Component libraries", "CVA", "Material UI"]
     },
     {
-      category: "Architecture",
-      icon: Server,
-      items: ["Nx monorepos", "Modular frontend design", "Shared packages", "MFE architecture"]
-    },
-    {
       category: "Testing",
       icon: Terminal,
-      items: ["Vitest", "React Testing Library", "Playwright", "Cypress", "JUnit", "Snapshot & Contract testing"]
+      items: ["Vitest", "React Testing Library", "Cypress", "Playwright", "JUnit"]
     },
     {
-      category: "DevOps & Backend",
+      category: "DevOps & Delivery",
       icon: Cpu,
-      items: ["CI/CD pipelines", "Docker", "Kubernetes", "AWS", "Node.js", "Spring Boot", "GraphQL"]
-    }
+      items: ["CI/CD pipelines (Jenkins)", "Docker", "Kubernetes", "AWS", "GCP"]
+    },
+    {
+      category: "Process",
+      icon: Users,
+      items: ["Agile/Scrum", "Estimation", "Cross-functional collaboration", "Code reviews"]
+    },
   ],
   experience: [
     {
-      role: "Senior Frontend Engineer",
+      role: "Senior Software Engineer",
       company: "TA Instruments (Waters Corporation)",
       location: "Wilmington, DE - Hybrid",
       period: "2025 – Present",
-      description: "Core frontend contributor on a 3-person UI team building NextGen scientific SaaS platform using React and TypeScript within an Nx monorepo architecture.",
+      description: "Core contributor on a 3-person UI team building a NextGen SaaS platform using React and TypeScript within an Nx monorepo.",
       achievements: [
-        "Design and maintain scalable UI systems and shared component libraries consumed across multiple applications",
-        "Partnered with backend engineers to refine API contracts and optimize data flows supporting complex scientific workflows",
-        "Develop high-performance real-time data visualizations using D3 and WebGL (Pixi.js)",
-        "Build and evolve server-state (TanStack Query) and client state (Zustand) solutions to support complex domain workflows",
-        "Contribute to architectural discussions and frontend best practices across the team",
-        "Established unified linting/formatting standards and implemented pre-push validation to reduce regressions",
-        "Spearheaded adoption of AI-assisted development tooling to improve engineering efficiency",
-        "Own full lifecycle of features from cross-functional planning through implementation, testing, and deployment"
+        "Own end-to-end delivery of complex features — from problem definition and system design through implementation, testing, and production deployment",
+        "Design and scale shared UI systems and component libraries used across multiple applications",
+        "Build high-performance, data-driven user interfaces, including real-time visualization workflows for complex domain-specific problems",
+        "Define API contracts and collaborate closely with backend engineers to support complex, cross-system product workflows",
+        "Designed and implemented AI-assisted development workflows, improving feature delivery speed by ~30–50%",
+        "Built structured workspace context systems and agent-driven tooling for code generation, debugging, and cross-layer system analysis",
+        "Established engineering standards (linting, formatting, pre-push validation) to improve code quality and reduce regressions",
+        "Drive frontend architecture decisions and establish best practices across the platform"
       ]
     },
     {
@@ -80,12 +97,12 @@ export const resumeData = {
       company: "JP Morgan Chase & Co.",
       location: "Wilmington, DE - Hybrid",
       period: "2022 – 2024",
-      description: "Delivered React and Angular applications supporting enterprise-scale financial platforms.",
+      description: "Delivered customer-facing React and Angular applications integrated with enterprise Java-based backend services.",
       achievements: [
-        "Contributed to frontend modernization initiatives and modular architecture improvements",
-        "Built reusable, accessible component systems aligned with design standards",
-        "Implemented automated testing and CI/CD improvements",
-        "Collaborated with backend teams on REST and GraphQL integrations"
+        "Played a key role in frontend modernization (Angular → React) within a microservices architecture",
+        "Defined API contracts and data flows across distributed services",
+        "Built reusable, accessible component systems to improve development speed and UI consistency",
+        "Improved CI/CD reliability and testing stability to support consistent production delivery"
       ]
     },
     {
@@ -93,11 +110,11 @@ export const resumeData = {
       company: "PNC",
       location: "Pittsburgh, PA / Tampa, FL - Remote",
       period: "2019 – 2022",
-      description: "Developed full-stack banking micro-application for high-net-worth customers.",
+      description: "Delivered full-stack banking features across Angular frontends and Spring Boot microservices backed by MongoDB.",
       achievements: [
-        "Delivered full-stack features across Angular frontends and Spring Boot microservices within a microservices architecture",
-        "Maintained 85% unit test coverage under strict quality gates",
-        "Contributed to MongoDB schema design and production release coordination"
+        "Developed micro-applications for high-net-worth customers within a microservices architecture",
+        "Maintained 85%+ unit test coverage under strict quality gates",
+        "Built foundational experience across frontend, backend, and data layers in production systems"
       ]
     }
   ],
